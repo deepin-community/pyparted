@@ -1,0 +1,597 @@
+pyparted (3.11.7-1) unstable; urgency=medium
+
+  * Add upstream GPG signing key
+  * Adopt package (Closes: #986938)
+  * Add gbp.conf with Python Team expectations
+  * Move to debhelper-compat v12
+  * Remove default ld flag as-needed
+  * Add Rules-Requires-Root tag
+
+ -- Bastian Germann <bage@debian.org>  Tue, 28 Sep 2021 20:40:46 +0200
+
+pyparted (3.11.7-0.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * [a04b7a6] New upstream version 3.11.7
+  * [09bb84d] Add gitlab-ci.yml
+
+ -- Michael Prokop <mika@debian.org>  Wed, 02 Dec 2020 22:36:29 +0100
+
+pyparted (3.11.6-0.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Remove outdated upstream signing key
+  * New upstream version 3.11.6 (Closes: #957720)
+    * Remove upstream applied patches
+    * Stop building for Python 2.x, now unsupported upstream
+
+ -- Chris Hofstaedtler <zeha@debian.org>  Sat, 29 Aug 2020 23:04:32 +0000
+
+pyparted (3.11.2-11) unstable; urgency=medium
+
+  * debian/patches:
+      - Decimal instead of float in some operations.
+        A try to avoid 'Floating point exception'. Reproducible-builds.
+        Github issue #57 - https://github.com/dcantrell/pyparted/issues/57
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Mon, 22 Apr 2019 18:03:03 -0300
+
+pyparted (3.11.2-10) unstable; urgency=medium
+
+  * debian/tests/
+      - control - Add python3-six dep
+      - run_py3_test.sh - cleaning
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Wed, 27 Feb 2019 17:31:11 -0300
+
+pyparted (3.11.2-9) unstable; urgency=medium
+
+  * debian/patches
+      - skip_0gt0.patch file is back.
+        Without it some archs fail to buildd.
+        Even with it reproducible-builds fails
+        when amrhf, though.
+        Similar error message.
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Tue, 26 Feb 2019 11:32:41 -0300
+
+pyparted (3.11.2-8) unstable; urgency=medium
+
+  * debian/patches:
+      - Do not apply skip_0gt0.patch
+  * debian/tests/control:
+      - Build not needed
+      - No Depends field
+  * debian/tests/run_py3_test.sh
+      - py3 unittest discover only
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Tue, 26 Feb 2019 08:46:02 -0300
+
+pyparted (3.11.2-7) unstable; urgency=medium
+
+  * debian/rules:
+      - no override for tests
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Mon, 25 Feb 2019 13:29:46 -0300
+
+pyparted (3.11.2-6) unstable; urgency=medium
+
+  * debian/rules:
+      - Skip build-time tests (Closes: #908879)
+  * debian/tests/:
+      - Add run_py3_test.sh file
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Thu, 14 Feb 2019 10:49:15 -0200
+
+pyparted (3.11.2-5) unstable; urgency=medium
+
+  * debian/patches:
+      - skip tests because of some architectures
+        skip_0gt0.patch
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Tue, 12 Feb 2019 19:56:15 -0200
+
+pyparted (3.11.2-4) unstable; urgency=medium
+
+  * debian/patches:
+      - skip 3 tests for Debian CI
+  * debian/rules:
+      - tests for py3 only
+      - Add 'ifeq/endif for dh_auto_test
+  * debian/tests/control:
+      - tests during build, check .so file is back
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Tue, 12 Feb 2019 18:51:38 -0200
+
+pyparted (3.11.2-3) unstable; urgency=medium
+
+  * Fix/enable build-time tests - (Closes: #922081)
+    Thanks Steve Langasek and Łukasz 'sil2100' Zemczak
+    modified:   debian/control
+    new file:   debian/patches/fix-unit-tests.patch
+    modified:   debian/patches/series
+    deleted:    debian/patches/unknow_parttition_flag.patch
+    modified:   debian/rules
+  * Revert "Debian CI - tests if py37 *.so file exists"
+    debian/tests/control:
+      - Run upstream tests build-time
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Tue, 12 Feb 2019 09:45:40 -0200
+
+pyparted (3.11.2-2) unstable; urgency=medium
+
+  * debian/watch:
+      - avoid upstream version get duplicated
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Thu, 07 Feb 2019 09:24:26 -0200
+
+pyparted (3.11.2-1) unstable; urgency=medium
+
+  * New upstream version 3.11.2
+  * debian/control:
+      - Bump Standards-Version from 4.2.1 to 4.3.0
+  * debian/copyright:
+      - No make_one_primary_partition.py file
+      - Remove unused-license-paragraph
+      - Update year for upstream and myself
+  * debian/python-parted-doc.examples:
+      - No make_one_primary_partition.py file
+  * debian/tests/control:
+      - Tests if py37 *.so file exists
+  * debian/upstream:
+      - Add signing-key.asc file
+  * debian/watch:
+      - upstream has .asc file now
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Wed, 06 Feb 2019 10:10:08 -0200
+
+pyparted (3.11.1-13) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/changelog: Remove trailing whitespaces
+
+  [ Herbert Fortes ]
+  * debian/control:
+      - Bump Standards-Version from 4.1.4 to 4.2.1
+  * debian/rules:
+      - override_dh_auto_test is empty now
+        No DEB_BUILD_OPTIONS, as lintian wants
+        No tests during build (Closes: #908879)
+        Tests only in CI
+  * debian/README.Debian:
+      - Fix typo
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Sun, 18 Nov 2018 13:17:11 -0200
+
+pyparted (3.11.1-12) unstable; urgency=medium
+
+  * debian/tests/control:
+      - Remove build-needed, add @builddeps@
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Sun, 01 Jul 2018 16:35:54 -0300
+
+pyparted (3.11.1-11) unstable; urgency=medium
+
+  * debian/tests/control:
+      - Add 'build-needed' - CI
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Sun, 01 Jul 2018 08:38:06 -0300
+
+pyparted (3.11.1-10) unstable; urgency=medium
+
+  * debian/tests/control:
+      - Remove path to cmd make
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Sat, 30 Jun 2018 08:42:58 -0300
+
+pyparted (3.11.1-9) unstable; urgency=medium
+
+  * debian/patches:
+      - Update unknow_partition_flag.patch. Test fails in some archs - skip
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Mon, 25 Jun 2018 08:20:57 -0300
+
+pyparted (3.11.1-8) unstable; urgency=medium
+
+  * debian/control:
+      - Add python-six to Build-Depends
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Sun, 24 Jun 2018 17:49:29 -0300
+
+pyparted (3.11.1-7) unstable; urgency=medium
+
+  * debian/control:
+      - Bump Standards-Version from 4.1.3 to 4.1.4
+      - Remove 'X-Python*-version entries
+  * debian/rules:
+      - override_dh_auto_test to use 'make test'
+  * debian/patches:
+      - Remove repro-build.patch - unused
+      - Add unknow_partition_flag.patch to skip 3 tests
+  * debian/tests:
+      - Add control file
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Sun, 24 Jun 2018 12:44:30 -0300
+
+pyparted (3.11.1-6) unstable; urgency=medium
+
+  * debian/control:
+      - Add version to suggested doc package
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Sun, 24 Jun 2018 11:24:14 -0300
+
+pyparted (3.11.1-5) unstable; urgency=medium
+
+  * Add Breaks, Replaces on *-doc package. (Closes: #887912)
+    Thanks Andreas Beckmann.
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Sun, 21 Jan 2018 15:29:49 -0200
+
+pyparted (3.11.1-4) unstable; urgency=medium
+
+  * Create *-doc package
+  * debian/control:
+      - Add python-parted-doc entry
+      - Add 'Suggests' entry for *-parted packages
+  * debian/python3-parted.docs:
+      - Only README.Debian file
+  * Remove:
+      - debian/python-parted.docs
+      - debian/python-parted.examples
+      - debian/python3-parted.examples
+  * Create:
+      - debian/python-parted-doc.docs
+      - debian/python-parted-doc.examples
+        files for Python 2 and Python 3
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Sat, 20 Jan 2018 15:17:51 -0200
+
+pyparted (3.11.1-3) unstable; urgency=medium
+
+  * debian/control:
+      - Update Vcs-* entries - salsa.debian.org
+  * debian/README.Debian:
+      - Like the previous Debian revision, this one also (Closes: #887283)
+        The same reason. e2fsprogs is not needed to run pyparted. This
+        bug number is related to Python 3 package
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Thu, 18 Jan 2018 13:34:15 -0200
+
+pyparted (3.11.1-2) unstable; urgency=medium
+
+  * DH_LEVEL: 11
+  * debian/control:
+      - Bump Standards-Version: from 4.0.0 to 4.1.3
+  * debian/copyright:
+      - secure-copyright-format-uri
+      - Update year in 'Files: debian/*'
+  * debian/README.Debian:
+      - Explain that e2fsprogs package is not needed to run pyparted
+        Thanks Helmut Grohne (Closes: #887170)
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Wed, 17 Jan 2018 15:35:53 -0200
+
+pyparted (3.11.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control:
+      - Bump STD-Version from 3.9.8 to 4.0.0.
+  * debian/copyright:
+      - Update.
+  * debian/paches:
+      - Remove repro-build.patch. Applied byt the upstream.
+      - Add typo_iff.patch.
+      - Add typo_mimimum.patch.
+  * debian/rules:
+      - Add DEB_BUILD_MAINT_OPTIONS = hardening=+all
+      - Change DEB_LDFLAGS_MAINT_APPEND:
+          - -'-Wl,-z,now'
+          - +'-Wl,--as-needed'
+      - Add 'override_dh_clean':
+          - rm *-dbg directories.
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Sun, 02 Jul 2017 09:18:54 -0300
+
+pyparted (3.10.7-3) unstable; urgency=medium
+
+  * debian/control:
+      - using debian.org mail address.
+      - Standards-Version from 3.9.6 to 3.9.8.
+      - creation of dbg packages stopped. Debhelper take care of that.
+  * debian/copyright updated.
+  * debian/patches:
+      - repro-build.patch added. Thanks Reiner Herrmann. (Closes: #828788)
+      - typo-pydisck-h.patch added. Fixes a typo.
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Tue, 28 Jun 2016 11:05:48 -0300
+
+pyparted (3.10.7-2) unstable; urgency=low
+
+  * debian/control:
+      - Build-Depends updated: libparted-dev
+  * debian/rules:
+      - override_dh_auto_test added. FTBFS with tests (Closes: #805249)
+
+ -- Herbert Parentes Fortes Neto <hpfn@ig.com.br>  Tue, 17 Nov 2015 14:47:47 -0200
+
+pyparted (3.10.7-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/python-parted.docs:
+      - the BUGS file was removed by the upstream.
+  * debian/python3-parted.docs:
+      - the BUGS file was removed by the upstream.
+  * debian/example/*:
+      - examples for python-parted.(entry added in python-parted.examples)
+        Thanks Michael Ablassmeier. (Closes: #692503)
+
+ -- Herbert Parentes Fortes Neto <hpfn@ig.com.br>  Sat, 05 Sep 2015 18:37:24 -0300
+
+pyparted (3.10.5-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/copyright: updated.
+  * debian/*.docs: NEWS removed. Too old info.
+  * debian/*.examples: created.
+  * debian/watch: updated.
+
+ -- Herbert Parentes Fortes Neto <hpfn@ig.com.br>  Tue, 12 May 2015 10:46:45 -0300
+
+pyparted (3.10.3-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Herbert Parentes Fortes Neto <hpfn@ig.com.br>  Tue, 28 Apr 2015 11:46:47 -0300
+
+pyparted (3.10.3-1) experimental; urgency=medium
+
+  * New upstream release
+  * Updated debian/copyright.
+
+ -- Herbert Parentes Fortes Neto <hpfn@ig.com.br>  Sat, 28 Feb 2015 14:39:56 -0300
+
+pyparted (3.10.2-1) experimental; urgency=medium
+
+  * New upstream release
+  * New maintainer. Thanks to Luca Falavigna, the initial maintainer, for
+    your nice work over this package. (Closes: #755301)
+  * Acknowledge NMU. Thanks to Intrigeri <intrigeri@debian.org> and
+    Christian Kastner <debian@kvr.at>. (Closes: #769737)
+  * remove debian/docs.
+  * created debian/python-parted.docs and debian/python3-parted-docs files
+    with BUGS, HACKING, NEWS, README and TODO entries
+  * update debian/copyright.
+           Source field
+           on Files: * Copyright field.
+                       update to 2007-2014 Red Hat Inc
+           on Files: debian/* Copyright field.
+                       added  Intrigeri <intrigeri@debian.org>
+           using GPL2 license as is in
+                       /usr/share/debhelper/dh_make/licenses/gpl2
+  * update debian/control:
+           Maintainer and Homepage fields.
+           Uploaders removed.
+           Vcs-Git and Vcs-Browser fields.
+           Build-Depends field. added dh-python.
+           python3-parted-dbg: fix Depends field. now ${python3:Depends}.
+  * update debian/rules file.
+           added DEB_LDFLAGS_MAINT_APPEND to stop 'blhc --all' messages.
+           remove empty directory usr/lib/python*/dist-packages/parted/.
+  * update debian/patches/no-last-flag-check.patch because the file
+    src/pydisk.c was changed.
+  * debian/patches/Fix-localeC-imports.patch removed.
+    the upstreamfixed the source code in version 3.10.1.
+  * update debian/watch file.
+
+ -- Herbert Parentes Fortes Neto <hpfn@ig.com.br>  Sun, 30 Nov 2014 15:19:28 -0200
+
+pyparted (3.10.0-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Backport patch Fix-localeC-imports.patch from upstream which fixes an
+    ImportError that rendered the python3-parted package unusable.
+    Thanks to Christian Kastner <debian@kvr.at> for the patch (Closes: #769737).
+
+ -- intrigeri <intrigeri@debian.org>  Sun, 16 Nov 2014 10:57:22 +0100
+
+pyparted (3.10.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/compat:
+    - Bump to compatibility level 9.
+  * debian/control:
+    - Bump Standards-Version to 3.9.6.
+  * debian/copyright:
+    - Adjust copyright years.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Tue, 30 Sep 2014 20:10:47 +0200
+
+pyparted (3.10-1) unstable; urgency=medium
+
+  [ Benjamin Drung ]
+  * New upstream release.
+  * Switch to pybuild.
+  * Add Python 3 support (Closes: #744211).
+
+  [ Luca Falavigna ]
+  * debian/control:
+    - Use canoncal URIs for the VCS-* fields.
+    - Bump Standards-Version to 3.9.5.
+  * debian/copyright:
+    - Adjust copyright years.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 19 Apr 2014 10:56:36 +0200
+
+pyparted (3.6-6) unstable; urgency=low
+
+  [ Tim Gardner ]
+  * m4/python.m4 really wants the full path in the PYTHON environment
+    variable in order to correctly determine all multiarch include paths
+    (closes: #697779).  Thanks to Colin Watson for the suggestion.
+
+  [ Colin Watson ]
+  * Improve debian/rules to stop immediately on errors.
+
+ -- Colin Watson <cjwatson@debian.org>  Thu, 10 Jan 2013 11:35:02 +0000
+
+pyparted (3.6-5) unstable; urgency=low
+
+  * debian/patches/no-last-flag-check.patch:
+    - Remove explicit *_LAST_FLAG checks, which impose additional interface
+      constraints not guaranteed by parted (closes: #697588).  We'll still
+      get parted exceptions for invalid flags, although they'll no longer be
+      ValueError.
+  * debian/control:
+    - Add myself to Uploaders.
+
+ -- Colin Watson <cjwatson@debian.org>  Mon, 07 Jan 2013 11:53:42 +0000
+
+pyparted (3.6-4) unstable; urgency=low
+
+  * debian/patches/py26.patch:
+    - Enable support for python2.6 (Closes: #642545).
+  * debian/control:
+    - Set X-Python-Version back to >= 2.6.
+  * debian/copyright:
+    - Adopt DEP5 syntax.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 24 Sep 2011 10:40:36 +0200
+
+pyparted (3.6-3) unstable; urgency=low
+
+  * debian/control:
+    - Build-depend on dh-autoreconf.
+    - Drop autoconf, automake and libtool build-dependencies.
+    - Drop Breaks field, no longer needed.
+  * debian/rules:
+    - Use autoreconf sequencer.
+    - Do not install .la file (Closes: #633254).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Thu, 14 Jul 2011 23:32:12 +0200
+
+pyparted (3.6-2) unstable; urgency=low
+
+  * Upload to unstable.
+  * debian/control:
+    - Bump Standards-Version to 3.9.2, no changes required.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 16 Apr 2011 15:35:58 +0200
+
+pyparted (3.6-1) experimental; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    - New release is not compatible with python versions prior to 2.7, so
+      bump X-Python-Version field to >= 2.7.
+    - Bump minimum version of python related packages to >= 2.6.6-13~ to
+      make sure python 2.7 is a supported python version.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 27 Mar 2011 12:07:47 +0200
+
+pyparted (3.5-1) unstable; urgency=low
+
+  * New upstream release.
+  * Switch to dh_python2.
+  * debian/control:
+    - Drop python-decorator (build-)dependency, no longer needed.
+    - Bump Standards-Version to 3.9.1, no changes required.
+  * debian/copyright:
+    - Update copyright years.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Wed, 09 Feb 2011 00:00:17 +0100
+
+pyparted (3.4-2) unstable; urgency=low
+
+  * debian/patches/no_PED_PARTITION_DIAG.patch:
+    - Removed, PED_PARTITION_DIAG is available in parted 2.3.
+  * debian/control:
+    - python2.6 is default, simplify dependencies accordingly.
+    - Build-depend on libparted0-dev (>= 2.3).
+    - Bump Standards-Version to 3.9.0, no changes required.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Tue, 29 Jun 2010 19:51:30 +0200
+
+pyparted (3.4-1) unstable; urgency=low
+
+  * New upstream release.
+  * Switch to format 3.0 (quilt).
+  * debian/patches/no_PED_PARTITION_DIAG.patch:
+    - Disable support for PARTITION_DIAG, not yet implemented upstream.
+  * debian/control:
+    - Add autoconf, automake and libtool to Build-Depends.
+    - Add autoconf2.13 and automake1.4 to Build-Conflicts.
+  * debian/rules:
+    - Run "autoreconf -fi -I m4" for every Python build instance to get
+      proper autoconf/libtool fixes.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 01 May 2010 12:17:44 +0200
+
+pyparted (3.1-2) unstable; urgency=low
+
+  * debian/rules:
+    - Fix location of detached symbols in the -dbg package.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Mon, 22 Mar 2010 11:39:54 +0100
+
+pyparted (3.1-1) experimental; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    - Maintain package under Parted Maintainer Team umbrella.
+    - Build-depend on libparted0-dev (>= 2.2).
+    - Remove some build-dependencies, pulled by lipparded0-dev already.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Tue, 09 Mar 2010 23:35:30 +0100
+
+pyparted (3.0-1) experimental; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    - Build-depend on libparted-2.1-dev.
+    - Remove quilt from Build-Depends.
+    - Bump Standards-Version to 3.8.4, no changes required.
+    - Let python-parted-dbg depend on python-dbg (>= 2.6) | python2.6-dbg.
+  * debian/copyright:
+    - Adjust copyright years.
+  * debian/README.source:
+    - Remove it, no longer needed.
+  * debian/pyversions:
+    - Build extension for Python 2.6 only.
+  * Drop lower_parted_version.patch and no_Fedora.patch, they are no
+    longer useful because libparted 2.1 implemented those features.
+  * Drop python2.5_fallback.patch and no_HashNotImplemented.patch,
+    extension is built for Python 2.6 only, so there is no need to
+    provide compatibility for older releases.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Mon, 08 Feb 2010 17:14:53 +0100
+
+pyparted (2.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/patches/lower_parted_version.patch:
+    - Refresh for new upstream release.
+  * Add python-decorator to Depends too.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Tue, 13 Oct 2009 21:30:22 +0200
+
+pyparted (2.1.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    - (Build-)Depend on python-decorator.
+    - Bump minimum libparted1.8-dev version to 1.8.8.git.2009.06.03.
+    - Update my e-mail address.
+    - Bump Standards-Version to 3.8.3, no changes required.
+  * debian/patches/lower_parted_version.patch:
+    - Lower required parted version, current Debian version already fulfil
+      pyparted requirements.
+  * debian/patches/no_Fedora.patch:
+    - Remove features available in Fedora's parted only.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Fri, 02 Oct 2009 02:36:35 +0200
+
+pyparted (2.0.12-1) unstable; urgency=low
+
+  * Initial release (Closes: #512011).
+
+ -- Luca Falavigna <dktrkranz@ubuntu.com>  Mon, 18 May 2009 23:52:08 +0200

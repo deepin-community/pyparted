@@ -1,0 +1,25 @@
+pyparted (3.11.1-2) unstable; urgency=medium
+
+ Bug #887170.
+ e2fsck name is referred in a docstring. pyparted does not
+ need the e2fsprogs package to run.
+
+ But some tools from e2fsprogs are used in test files in
+ tests directory.
+
+ If you want to run tests you will need the e2fsprogs package
+ installed.
+
+ -- Herbert Parentes Fortes Neto <hpfn@debian.org>  Wed, 17 Jan 2018 15:35:53 -0200
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,3 @@
+Test-Command: debian/tests/run_py3_test.sh
+Depends: @, python3-six
+Restrictions: allow-stderr

@@ -1,0 +1,43 @@
+Source: pyparted
+Section: python
+Priority: optional
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Uploaders: Bastian Germann <bage@debian.org>
+Build-Depends: debhelper-compat (= 12),
+               dh-python,
+               libparted-dev,
+               parted,
+               pkg-config,
+               python3-all-dev,
+               python3-six
+Standards-Version: 4.3.0
+Rules-Requires-Root: no
+Homepage: https://github.com/dcantrell/pyparted
+Vcs-Git: https://salsa.debian.org/debian/pyparted.git
+Vcs-Browser: https://salsa.debian.org/debian/pyparted
+
+Package: python3-parted
+Architecture: any
+Depends: ${misc:Depends}, ${python3:Depends}, ${shlibs:Depends}
+Provides: ${python3:Provides}
+Suggests: python-parted-doc (>= 3.11.1-5)
+Description: Python 3 interface for libparted
+ pyparted is a set of Python modules that provide Python programmers an
+ interface to libparted (http://www.gnu.org/software/parted), the GNU parted
+ library for disk partitioning and file system manipulation.
+ .
+ This package contains Python 3 extension itself.
+
+Package: python-parted-doc
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Breaks: python-parted (<< 3.11.1-5), python3-parted (<< 3.11.1-5)
+Replaces: python-parted (<< 3.11.1-5), python3-parted (<< 3.11.1-5)
+Depends: ${misc:Depends}
+Description: Python 3 interface for libparted (common documentation)
+ pyparted is a set of Python modules that provide Python programmers an
+ interface to libparted (http://www.gnu.org/software/parted), the GNU parted
+ library for disk partitioning and file system manipulation.
+ .
+ This package contains the common documentation.
