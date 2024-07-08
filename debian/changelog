@@ -1,3 +1,9 @@
+pyparted (3.11.7-1deepin1) unstable; urgency=medium
+
+  * No source change upload against python 3.12.
+
+ -- Tianyu Chen <sweetyfish@deepin.org>  Mon, 08 Jul 2024 09:54:09 +0200
+
 pyparted (3.11.7-1) unstable; urgency=medium
 
   * Add upstream GPG signing key
