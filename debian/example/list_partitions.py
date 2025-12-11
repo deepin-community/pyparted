@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # list primary partitions for a given device
 import parted
 
