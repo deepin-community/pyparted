@@ -4,7 +4,7 @@ Upstream-Contact: David Cantrell <dcantrell@redhat.com>
 Source: https://github.com/dcantrell/pyparted
 
 Files: *
-Copyright: 2007-2019 Red Hat, Inc.
+Copyright: 2007-2020 Red Hat, Inc.
 License: GPL-2+
 
 Files: debian/*

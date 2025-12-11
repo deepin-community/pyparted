@@ -6,9 +6,11 @@ Uploaders: Bastian Germann <bage@debian.org>
 Build-Depends: debhelper-compat (= 12),
                dh-python,
                libparted-dev,
+               libpython3-all-dev,
                parted,
                pkg-config,
-               python3-all-dev,
+               python3-all-dev:any,
+               python3-setuptools,
                python3-six
 Standards-Version: 4.3.0
 Rules-Requires-Root: no

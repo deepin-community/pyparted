@@ -1,5 +1,8 @@
 #!/usr/bin/make -f
 
+include /usr/share/dpkg/architecture.mk
+export PKG_CONFIG_PATH=/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig
+
 export PYBUILD_NAME=parted
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all

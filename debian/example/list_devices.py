@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # simple example on how to list available devices on system
 import parted
 
